@@ -1,15 +1,9 @@
-a,b,c=map(int, input().split())
-if b < a < c or c < a < b:
-    print(a)
-elif a < b < c or c < b < a:
-    print(b)
-elif a < c < b or b < c < a:
-    print(c)
-elif a==b:
-    print(a)
-elif b==c:
-    print(b)
-elif c==a:
-    print(c)
-else:
-    print(a)
+a,b=map(int,input().split())
+c=list(map(int,input().split()))
+for i in range(a):
+    if c[i]>=b:
+        c[i]=0
+for i in range(c.count(0)):
+	c.remove(0)
+for i in c:
+    print(i, end=' ')
