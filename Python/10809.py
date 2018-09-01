@@ -1,3 +1,4 @@
+# 알파벳 찾
 a=[chr(i) for i in range(97,123)]
 S=list(input())
 result=""
