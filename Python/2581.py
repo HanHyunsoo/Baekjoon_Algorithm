@@ -1,10 +1,10 @@
-class Decimal:
+class Prime_number:
     def __init__(self, m, n):
         self.m = m
         self.n = n
         self.result = []
 
-    def find_decimal(self):
+    def find_prime_number(self):
         for i in range(self.m, self.n + 1):
             test = []
             for j in range(2, i + 1):
@@ -21,11 +21,11 @@ class Decimal:
     
     
 a, b = int(input()), int(input())
-d = Decimal(a, b)
-d.find_decimal()
+p = Prime_number(a, b)
+p.find_prime_number()
 
-if len(d.result) == 0:
+if len(p.result) == 0:
     print(-1)
 else:
-    d.print_sum()
-    d.print_min()
+    p.print_sum()
+    p.print_min()
