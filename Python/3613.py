@@ -49,7 +49,7 @@ def check_java_or_cpp(string):
         else: # 그외의 문자
             return "error"
     
-    if check[0] == 0 and check[1] > 0 and check[2] >= 0:
+    if check[0] == 0 and check[1] > 0 and check[2] >= 0: # _문자가 0개 이상인 이유는 소문자만 입력받는 경우를 예외처리 하기때문이다.
         return "cpp"
     elif check[0] > 0 and check[1] > 0 and check[2] == 0:
         return "java"
