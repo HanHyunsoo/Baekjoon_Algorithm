@@ -10,7 +10,7 @@ public class Main {
         br.close();
 
         int a = 0, b = 9, digit = 1, idx;
-        
+
         while(true) {
             if(a < n && n <= b) {
                 idx = n - a - 1;
@@ -27,7 +27,6 @@ public class Main {
             b = a + Integer.parseInt("9" + lenStringZero) * digit;
         }
 
-        System.out.println(Math.pow(10, digit-1));
         String result = String.valueOf((int)Math.pow(10, digit-1) + idx / digit);
         char[] resultArray = result.toCharArray();
         System.out.println(resultArray[idx % digit]);
