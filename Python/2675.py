@@ -1,9 +1,7 @@
-n=int(input())
-for i in range(n):
-    result=""
-    r,t=map(str, input().split())
-    r=int(r)
-    t=list(t)
-    for j in t:
-        result += j * r
-    print(result)
+import sys
+
+for i in range(int(input())):
+    n, string = input().split()
+    for j in string:
+        sys.stdout.write(j * int(n))
+    sys.stdout.write('\n')
