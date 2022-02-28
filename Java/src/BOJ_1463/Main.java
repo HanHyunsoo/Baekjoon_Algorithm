@@ -1,42 +1,23 @@
 package BOJ_1463;
-import java.util.ArrayList;
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Main {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        ArrayList<Integer> numbers = new ArrayList<Integer>();
-        numbers.add(Integer.parseInt(br.readLine()));
+        int N = Integer.parseInt(br.readLine());
+        int[] dp = new int[N + 1];
 
-        int count = 0;
-        while(true) {
-            if(numbers.get(0) == 1) {
-                System.out.println(count);
-                break;
-            }
+        dp[0] = 0;
+        dp[1] = 0;
 
-            numbers = makeOne(numbers);
-            count++;
-            if(numbers.contains(1)) {
-                System.out.println(count);
-                break;
-            }
-        }
-    }
-
-    public static ArrayList<Integer> makeOne(ArrayList<Integer> numbers) {
-        ArrayList<Integer> returnResult = new ArrayList<Integer>();
-
-        for(int number : numbers) {
-            returnResult.add(number - 1);
-            if(number % 3 == 0) {
-                returnResult.add(number / 3);
-            } else if(number % 2 == 0) {
-                returnResult.add(number / 2);
-            }
+        for (int i = 2; i <= N; i++) {
+            dp[i] = dp[i-1] + 1;
+            if (i % 2 == 0) dp[i] = Math.min(dp[i], dp[i/2] + 1);
+            if (i % 3 == 0) dp[i] = Math.min(dp[i], dp[i/3] + 1);
         }
 
-        return returnResult;
+        System.out.println(dp[N]);
     }
 }
