@@ -3,7 +3,10 @@ package BOJ_1931;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.StringTokenizer;
 
 public class Main {
 
@@ -22,7 +25,7 @@ public class Main {
             list.add(new Time(start, end));
         }
 
-        Collections.sort(list);
+        quickSort(list);
 
         int result = 0;
         int lastEndTime = 0;
@@ -35,6 +38,32 @@ public class Main {
         }
 
         System.out.println(result);
+    }
+
+    public static void quickSort(List<Time> timeList) {
+        sort(timeList, 0, timeList.size() - 1);
+    }
+
+    private static void sort(List<Time> timeList, int low, int high) {
+        if (low >= high) return;
+
+        int mid = partition(timeList, low, high);
+        sort(timeList, low, mid - 1);
+        sort(timeList, mid, high);
+    }
+
+    private static int partition(List<Time> timeList, int low, int high) {
+        Time pivot = timeList.get((low + high) / 2);
+        while (low <= high) {
+            while (timeList.get(low).compareTo(pivot) < 0) low++;
+            while (timeList.get(high).compareTo(pivot) > 0) high--;
+            if (low <= high) {
+                Collections.swap(timeList, low, high);
+                low++;
+                high--;
+            }
+        }
+        return low;
     }
 }
 
